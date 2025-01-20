@@ -56,6 +56,7 @@ export default function ResponsiveNav() {
           </div>
           <div className="hidden md:block">
             <div className="ml-4 flex items-center md:ml-6">
+             
               <button
                 onClick={toggleSearch}
                 className="p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -86,6 +87,8 @@ export default function ResponsiveNav() {
                 </div>
                 <AnimatePresence>
                   {isProfileOpen && (
+                    <>
+                   
                     <motion.div
                       className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
                       role="menu"
@@ -104,7 +107,9 @@ export default function ResponsiveNav() {
                         <LogOut className="mr-2 h-4 w-4" />
                         Sign out
                       </button>
+                      
                     </motion.div>
+                    </>
                   )}
                 </AnimatePresence>
               </div>
@@ -117,7 +122,11 @@ export default function ResponsiveNav() {
             >
               <span className="sr-only">Open main menu</span>
               {isMenuOpen ? (
+                <>
                 <X className="block h-6 w-6" aria-hidden="true" />
+               
+                </>
+
               ) : (
                 <Menu className="block h-6 w-6" aria-hidden="true" />
               )}
@@ -135,6 +144,16 @@ export default function ResponsiveNav() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
           >
+           
+           <input
+                  type="text"
+                  placeholder="Search..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="ml-3 w-40 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              
+
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {menuItems.map((item) => (
                 <a
@@ -146,6 +165,9 @@ export default function ResponsiveNav() {
                 </a>
               ))}
             </div>
+           
+
+
             <div className="pt-4 pb-3 border-t border-gray-200">
               <div className="flex items-center px-5">
                 <div className="flex-shrink-0">
@@ -188,12 +210,7 @@ export default function ResponsiveNav() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
-                <button
-                  type="submit"
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-500"
-                >
-                  <Search className="h-5 w-5" />
-                </button>
+               
               </div>
             </form>
           </motion.div>
